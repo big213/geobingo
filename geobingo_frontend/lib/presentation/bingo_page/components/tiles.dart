@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geobingo_frontend/presentation/bingo_page/components/hero_tile.dart';
+import 'package:geobingo_frontend/presentation/map_page/map_page.dart';
 
 class Tiles extends StatefulWidget {
   @override
@@ -10,9 +12,9 @@ class Tiles extends StatefulWidget {
 }
 
 class TilesState extends State<Tiles> {
+  int globalIndex = 0;
   @override
   Widget build(BuildContext context) {
-    List<Widget> rows = generateRow();
     // TODO: implement build
     return Container(
       height: 480,
@@ -24,13 +26,12 @@ class TilesState extends State<Tiles> {
                 topLeft: Radius.circular(50), topRight: Radius.circular(50))),
         child: Center(
           child: Table(
-            defaultVerticalAlignment: TableCellVerticalAlignment.bottom,
             children: [
-              TableRow(children: [...rows]),
-              TableRow(children: [...rows]),
-              TableRow(children: [...rows]),
-              TableRow(children: [...rows]),
-              TableRow(children: [...rows])
+              TableRow(children: [...generateRow()]),
+              TableRow(children: [...generateRow()]),
+              TableRow(children: [...generateRow()]),
+              TableRow(children: [...generateRow()]),
+              TableRow(children: [...generateRow()])
             ],
           ),
         ),
@@ -40,13 +41,9 @@ class TilesState extends State<Tiles> {
 
   List<Widget> generateRow() {
     List<Widget> rows = List.generate(5, (index) {
-      return GestureDetector(
-        child: Container(
-          margin: EdgeInsets.only(top: 50),
-          width: 20,
-          height: 20,
-          child: Icon(Icons.ac_unit),
-        ),
+      globalIndex++;
+      return HeroTile(
+        globalIndexValue: globalIndex,
       );
     });
     return rows;
