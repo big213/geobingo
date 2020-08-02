@@ -10,11 +10,12 @@ class HeaderComponent extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(color: Color(0xff06BCC1)),
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
             top: 50,
-            left: 30,
-            child: Text("GEOBINGO", style: GoogleFonts.poppins(fontSize: 35.0)),
+            child: Image.asset("images/uxsuolu.png"),
+            width: 250,
           ),
         ],
       ),

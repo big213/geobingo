@@ -5,7 +5,11 @@ import 'presentation/map_page/map_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    routes: {'/second': (context) => MapPage()},
+    debugShowCheckedModeBanner: false,
+    routes: {
+      '/first': (context) => BingoPage(),
+      '/second': (context) => MapPage()
+    },
     home: Scaffold(body: BingoPage()),
   ));
 }

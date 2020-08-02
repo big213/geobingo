@@ -1,10 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geobingo_frontend/data/location.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HeroTile extends StatefulWidget {
   final int globalIndexValue;
+  int id;
+  String placeName;
+  String placeID;
+  int position;
+  Location userPosition;
 
-  HeroTile({Key key, this.globalIndexValue}) : super(key: key);
+  HeroTile(
+      {Key key,
+      this.globalIndexValue,
+      this.id,
+      this.placeID,
+      this.placeName,
+      this.userPosition,
+      this.position})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -19,8 +34,11 @@ class HeroTileState extends State<HeroTile> {
     // TODO: implement build
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/second',
-            arguments: {"tag": "tag_${widget.globalIndexValue}"});
+        Navigator.pushNamed(context, '/second', arguments: {
+          "tag": "tag_${widget.globalIndexValue}",
+          "position": widget.userPosition,
+          "name": widget.placeName
+        });
       },
       child: Hero(
         tag: 'tag_${widget.globalIndexValue}',
