@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "jql-boilerplate",
+    "production": "geobingo-bd1a6"
+  }
+}
